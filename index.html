@@ -1,0 +1,41 @@
+
+<body>
+<button id="terminate" >
+    terminate
+</button>
+
+<button id="create" >
+    create
+</button>
+
+<button id="close" >
+    close
+</button>
+
+<button id="runtask" >
+    run 3 tasks
+</button>
+</body>
+<script>
+    let create = () => {
+        window.myWorker = new Worker('worker.js');
+        // window.myWorker.postMessage('RUN')
+    }
+
+    document.getElementById('create').onclick = () => {
+        create()
+    }
+    
+    document.getElementById('terminate').onclick = () => {
+        window.myWorker.terminate()
+    }
+    
+
+    document.getElementById('runtask').onclick = () => {
+        window.myWorker.postMessage('RUN_TASK')
+    }
+
+    document.getElementById('close').onclick = () => {
+        window.myWorker.postMessage('CLOSE')
+    }
+</script>
